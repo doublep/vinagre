@@ -256,8 +256,8 @@ vnc_parse_item (VinagreConnection *conn, xmlNode *root)
 	}
       else if (!xmlStrcmp(curr->name, BAD_CAST "scaling"))
 	{
-	  if (!scaling_command_line)
-	    vinagre_vnc_connection_set_scaling (vnc_conn, vinagre_utils_parse_boolean ((const gchar *)s_value));
+	  /* if (!scaling_command_line) */
+	  /*   vinagre_vnc_connection_set_scaling (vnc_conn, vinagre_utils_parse_boolean ((const gchar *)s_value)); */
 	}
       else if (!xmlStrcmp(curr->name, BAD_CAST "keep_ratio"))
 	{

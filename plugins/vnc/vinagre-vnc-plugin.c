@@ -45,13 +45,13 @@ G_DEFINE_TYPE_EXTENDED (VinagreVncPlugin,
 			G_IMPLEMENT_INTERFACE (VINAGRE_TYPE_PROTOCOL,
 					       vinagre_vnc_protocol_iface_init))
 
-static const GOptionEntry vinagre_vnc_args[] =
-{
-  { "vnc-scale", 0, 0, G_OPTION_ARG_NONE, &scaling_command_line,
-  /* Translators: this is a command line option (run vinagre --help) */
-  N_("Enable scaled mode"), 0 },
-  { NULL }
-};
+/* static const GOptionEntry vinagre_vnc_args[] = */
+/* { */
+/*   { "vnc-scale", 0, 0, G_OPTION_ARG_NONE, &scaling_command_line, */
+/*   /\* Translators: this is a command line option (run vinagre --help) *\/ */
+/*   N_("Enable scaled mode"), 0 }, */
+/*   { NULL } */
+/* }; */
 
 static GSList *
 impl_get_context_groups (VinagreProtocol *plugin)
@@ -59,7 +59,7 @@ impl_get_context_groups (VinagreProtocol *plugin)
   GOptionGroup *group;
   GSList       *groups = NULL;
 
-  scaling_command_line = FALSE;
+  /* scaling_command_line = FALSE; */
   group = g_option_group_new ("vnc",
 			      /* Translators: this is a command line option (run vinagre --help) */
 			      _("VNC Options:"),
@@ -67,7 +67,7 @@ impl_get_context_groups (VinagreProtocol *plugin)
 			      _("Show VNC Options"),
 			      NULL,
 			      NULL);
-  g_option_group_add_entries (group, vinagre_vnc_args);
+  /* g_option_group_add_entries (group, vinagre_vnc_args); */
 
   groups = g_slist_append (groups, group);
   groups = g_slist_append (groups, vnc_display_get_option_group ());
@@ -106,7 +106,7 @@ impl_new_connection (VinagreProtocol *plugin)
 
   conn = vinagre_vnc_connection_new ();
   vinagre_vnc_connection_set_scaling (VINAGRE_VNC_CONNECTION (conn),
-				      scaling_command_line);
+				      FALSE /* scaling_command_line */);
 
   return conn;
 }
