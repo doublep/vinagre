@@ -454,17 +454,18 @@ tab_tooltip_changed_cb (GObject *object, GParamSpec *pspec, VinagreNotebook *nb)
 static void
 tab_disconnected_cb (VinagreTab *tab, VinagreNotebook *nb)
 {
-  gchar *message, *name, *emphasis;
+  // Fuck the dialog, it's too annoying and steals focus.
+  /* gchar *message, *name, *emphasis; */
 
-  name = vinagre_connection_get_best_name (vinagre_tab_get_conn (tab));
-  emphasis = g_strdup_printf ("<i>%s</i>", name);
-  /* Translators: %s is a host name or IP address. */
-  message = g_strdup_printf (_("Connection to host %s was closed."),
-			     emphasis);
-  vinagre_utils_show_error_dialog (_("Connection closed"), message, GTK_WINDOW (nb->priv->window));
-  g_free (message);
-  g_free (name);
-  g_free (emphasis);
+  /* name = vinagre_connection_get_best_name (vinagre_tab_get_conn (tab)); */
+  /* emphasis = g_strdup_printf ("<i>%s</i>", name); */
+  /* /\* Translators: %s is a host name or IP address. *\/ */
+  /* message = g_strdup_printf (_("Connection to host %s was closed."), */
+  /*       		     emphasis); */
+  /* vinagre_utils_show_error_dialog (_("Connection closed"), message, GTK_WINDOW (nb->priv->window)); */
+  /* g_free (message); */
+  /* g_free (name); */
+  /* g_free (emphasis); */
 
   vinagre_notebook_close_tab (nb, tab);
 }
